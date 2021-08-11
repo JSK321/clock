@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         display: 'flex',
         justifyContent: "center",
-        alignItems: 'flex-start',
+        // alignItems: 'center',
+        // alignContent: 'flex-end',
         alignContent: 'center',
         flexWrap: 'wrap',
     },
@@ -21,6 +22,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainPage() {
     const classes = useStyles()
+
+    const [secTimer, setSecTimer] = useState(0)
+    const secDigOne = document.getElementById("secDigitOne")
+
+    useEffect(() => {
+        // console.log(secTimer)
+        const timer = setInterval(() => {
+            // setSecTimer((prevTime) => (prevTime <= 9 ? prevTime + 1: prevTime))
+            // if(secTimer < 9) {
+            //     setSecTimer(secTimer + 1)
+            // } 
+            // else if(secTimer == 9) {
+            //     clearInterval(timer)
+            // }
+        }, 1000)
+    }, [])
 
     return (
         <Container className={classes.container}>
