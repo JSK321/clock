@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width: 60,
         // height:"50
         color: "blue",
+        transition: "transform 0.5s linear",
         // border: 'solid 1px black',
         // transform:'translateY(-10%)'
     },
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         width: 60,
         // height:"50
         color: "blue",
+        transition: "transform 0.5s linear",
         border: 'solid 1px black',
         // transform:'translateY(-90%)'
     },
@@ -33,11 +35,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function Minutes() {
+export default function Minutes(props) {
     const classes = useStyles()
     return (
         <>
-            <Box className={classes.minutesBoxOne}>
+            <Box
+                className={classes.minutesBoxOne}
+                ref={props.minuteDigitOne}
+            >
                 <div
                     className={classes.timeDigits}
                     style={{
@@ -107,7 +112,9 @@ export default function Minutes() {
                     9
                 </div>
             </Box>
-            <Box className={classes.minutesBoxTwo}
+            <Box
+                className={classes.minutesBoxTwo}
+                ref={props.minuteDigitTwo}
                 style={{ marginRight: '3rem', marginLeft: "1.5rem" }}
             >
                 <div className={classes.timeDigits}>
