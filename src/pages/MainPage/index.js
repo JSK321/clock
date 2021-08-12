@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,27 +23,58 @@ const useStyles = makeStyles((theme) => ({
 export default function MainPage() {
     const classes = useStyles()
 
-    const [secTimer, setSecTimer] = useState(0)
-    const secDigOne = document.getElementById("secDigitOne")
+    // const secDigOne = document.getElementById("secDigitOne")
+    const count = useRef(0)
+    const incrementOne = useRef(0)
+    const incrementTwo = useRef(0)
+    // Minutes Timer
+    
+    // Seconds Timer
+    const secondDigitOne = useRef()
+    const secondDigitTwo = useRef()
 
     useEffect(() => {
-        // console.log(secTimer)
-        const timer = setInterval(() => {
-            // setSecTimer((prevTime) => (prevTime <= 9 ? prevTime + 1: prevTime))
-            // if(secTimer < 9) {
-            //     setSecTimer(secTimer + 1)
-            // } 
-            // else if(secTimer == 9) {
-            //     clearInterval(timer)
-            // }
-        }, 1000)
+        startClock()
     }, [])
+
+    function startClock() {
+        const timer = setInterval(() => {
+            if (count.current < 2) {
+                count.current = count.current + 1
+                incrementOne.current = incrementOne.current + -10
+                secondDigitOne.current.style.transform = `translateY(${incrementOne.current}%)`
+            } else if (count.current == 2) {
+                secondDigitOne.current.style.transform = 'translateY(0)'
+                updateSecond()
+                // count.current = 0
+                // incrementOne.current = 0
+                // clearInterval(timer)
+            }
+        }, 1000)
+    }
+
+    function updateSecond() {
+        if (count.current == 2 && incrementTwo.current != -20) {
+            incrementTwo.current = incrementTwo.current + -10
+            count.current = 0
+            incrementOne.current = 0
+            secondDigitTwo.current.style.transform = `translateY(${incrementTwo.current}%)`
+        } else if (incrementTwo.current == -20) {
+            secondDigitTwo.current.style.transform = 'translateY(0)'
+            incrementTwo.current = 0
+            count.current = 0
+            incrementOne.current = 0
+        }
+    }
 
     return (
         <Container className={classes.container}>
             <Hours />
             <Minutes />
-            <Seconds />
+            <Seconds
+                secondDigitOne={secondDigitOne}
+                secondDigitTwo={secondDigitTwo}
+            />
         </Container>
     )
 }
