@@ -30,12 +30,23 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: '100%',
         justifyContent: 'center',
-    }
+    },
+    // circle: {
+    //     position: 'absolute',
+    //     // zIndex: -1,
+    //     height: 55,
+    //     width: 55,
+    //     // transform: 'translate(-50%, -50%)',
+    //     display:'flex',
+    //     justifyContent:'center',
+    //     borderRadius: '50%',
+    //     border: '1px solid black',
+    // }
 }))
 
 export default function Seconds(props) {
     const classes = useStyles()
-    
+
     return (
         <>
             <Box
