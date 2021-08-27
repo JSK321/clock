@@ -8,14 +8,12 @@ const useStyles = makeStyles((theme) => ({
         width: 60,
         color: "blue",
         transition: "transform 0.5s linear"
-        // border: 'solid 1px black',
-
     },
     secondsBoxTwo: {
         width: 60,
-        // height:"50
         color: "blue",
         transition: "transform 0.5s linear",
+        marginLeft: "1.5rem",
         border: 'solid 1px black',
     },
     timeDigits: {
@@ -125,9 +123,10 @@ export default function Seconds(props) {
             <Box
                 className={classes.secondsBoxTwo}
                 ref={props.secondDigitTwo}
-                style={{ marginLeft: "1.5rem" }}
             >
-                <div className={classes.timeDigits}>
+                <div
+                    className={classes.timeDigits}
+                >
                     0
                 </div>
                 <div className={classes.timeDigits}>
@@ -154,7 +153,9 @@ export default function Seconds(props) {
                 <div className={classes.timeDigits}>
                     8
                 </div>
-                <div className={classes.timeDigits}>
+                <div
+                    className={classes.timeDigits}
+                >
                     9
                 </div>
             </Box>

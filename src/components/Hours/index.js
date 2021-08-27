@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
         // height:"50
         color: "blue",
         transition: "transform 0.5s linear",
+        marginRight: '3rem',
+        marginLeft: "1.5rem",
         border: 'solid 1px black',
     },
     timeDigits: {
@@ -97,9 +99,10 @@ export default function Hours(props) {
             <Box
                 className={classes.hoursBoxTwo}
                 ref={props.hourDigitTwo}
-                style={{ marginRight: '3rem', marginLeft: "1.5rem" }}
             >
-                <div className={classes.timeDigits}>
+                <div
+                    className={classes.timeDigits}
+                >
                     0
                 </div>
                 <div className={classes.timeDigits}>
@@ -126,7 +129,9 @@ export default function Hours(props) {
                 <div className={classes.timeDigits}>
                     8
                 </div>
-                <div className={classes.timeDigits}>
+                <div
+                    className={classes.timeDigits}
+                >
                     9
                 </div>
             </Box>
