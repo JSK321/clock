@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Container, Button } from '@material-ui/core'
+import React, { useEffect, useRef } from 'react'
+import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Hours from '../../components/Hours'
@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         display: 'flex',
         justifyContent: "center",
-        // alignItems: 'end',
-        alignItems: 'center',
+        alignItems: 'end',
+        // alignItems: 'center',
         // alignContent: 'center',
         // alignContent: 'flex-end',
         flexWrap: 'wrap',
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(413%, -270%) scale(.58)',
+        transform: 'translate(413%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(265%, -270%) scale(.58)',
+        transform: 'translate(265%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     },
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(74%, -270%) scale(.58)',
+        transform: 'translate(74%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     },
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(-74%, -270%) scale(.58)',
+        transform: 'translate(-74%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     },
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(-267.5%, -270%) scale(.58)',
+        transform: 'translate(-267.5%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     },
@@ -69,13 +69,13 @@ const useStyles = makeStyles((theme) => ({
         height: 55,
         width: 55,
         borderRadius: '15px',
-        transform: 'translate(-415%, -270%) scale(.58)',
+        transform: 'translate(-415%, -705%) scale(.58)',
         transition: "transform 0.5s linear",
         border: '1px solid black',
     }
 }))
 
-export default function MainPage() {
+export default function ClockPage() {
     const classes = useStyles()
     // counter for seconds from 0 - 9
     const count = useRef(0)
@@ -168,10 +168,10 @@ export default function MainPage() {
                 increSecTwo.current = increSecTwo.current + -10 // increment count of 2nd seconds digit (negative to move box upwards)
                 rotateSecTwo.current += 90 // increment to rotate box indicator of 2nd seconds digit
                 secondDigitTwo.current.style.transform = `translateY(${increSecTwo.current}%)` // move 2nd seconds digit box up by 10%
-                squareSecTwo.current.style.transform = `translate(413%, -270%) scale(.58) rotate(${rotateSecTwo.current}deg)` // rotate 2nd second digit indicator by 90 deg
+                squareSecTwo.current.style.transform = `translate(413%, -705%) scale(.58) rotate(${rotateSecTwo.current}deg)` // rotate 2nd second digit indicator by 90 deg
             } else if (count.current === 9) {
                 rotateSecTwo.current = 0 // reset 2nd second digit rotation degree to 0
-                squareSecTwo.current.style.transform = `translate(413%, -270%) scale(.58) rotate(0deg)` // reset indicator box
+                squareSecTwo.current.style.transform = `translate(413%, -705%) scale(.58) rotate(0deg)` // reset indicator box
                 secondDigitTwo.current.style.transition = 'transform 0.25s linear' // change transition speed of box 
                 secondDigitTwo.current.style.transform = 'translateY(0)' // reset box position
                 updateSecond()
@@ -187,10 +187,10 @@ export default function MainPage() {
             count.current = 0
             increSecTwo.current = 0
             secondDigitOne.current.style.transform = `translateY(${increSecOne.current}%)`
-            squareSecOne.current.style.transform = `translate(265%, -270%) scale(.58) rotate(${rotateSecOne.current}deg)`
+            squareSecOne.current.style.transform = `translate(265%, -705%) scale(.58) rotate(${rotateSecOne.current}deg)`
         } else if (increSecOne.current === -50) {
             rotateSecOne.current = 0
-            squareSecOne.current.style.transform = `translate(265%, -270%) scale(.58) rotate(0deg)`
+            squareSecOne.current.style.transform = `translate(265%, -705%) scale(.58) rotate(0deg)`
             secondDigitOne.current.style.transition = 'transform 0.25s linear'
             secondDigitOne.current.style.transform = 'translateY(0)'
             updateMinute()
@@ -206,10 +206,10 @@ export default function MainPage() {
             count.current = 0
             increSecOne.current = 0
             minuteDigitTwo.current.style.transform = `translateY(${increMinTwo.current}%)`
-            squareMinTwo.current.style.transform = `translate(74%, -270%) scale(.58) rotate(${rotateMinTwo.current}deg)`
+            squareMinTwo.current.style.transform = `translate(74%, -705%) scale(.58) rotate(${rotateMinTwo.current}deg)`
         } else if (increMinTwo.current === -90) {
             rotateMinTwo.current = 0
-            squareMinTwo.current.style.transform = `translate(74%, -270%) scale(.58) rotate(0deg)`
+            squareMinTwo.current.style.transform = `translate(74%, -705%) scale(.58) rotate(0deg)`
             minuteDigitTwo.current.style.transition = 'transform 0.25s linear'
             minuteDigitTwo.current.style.transform = 'translateY(0)'
             minuteProgress()
@@ -222,14 +222,14 @@ export default function MainPage() {
             increMinOne.current = increMinOne.current + -10
             rotateMinOne.current += 90
             minuteDigitOne.current.style.transform = `translateY(${increMinOne.current}%)`
-            squareMinOne.current.style.transform = `translate(-74%, -270%) scale(.58) rotate(${rotateMinOne.current}deg)`
+            squareMinOne.current.style.transform = `translate(-74%, -705%) scale(.58) rotate(${rotateMinOne.current}deg)`
             increSecTwo.current = 0
             count.current = 0
             increSecOne.current = 0
             increMinTwo.current = 0
         } else if (increMinOne.current === -50) {
             rotateMinOne.current = 0
-            squareMinOne.current.style.transform = `translate(-74%, -270%) scale(.58) rotate(0deg)`
+            squareMinOne.current.style.transform = `translate(-74%, -705%) scale(.58) rotate(0deg)`
             minuteDigitOne.current.style.transition = 'transform 0.25s linear'
             minuteDigitOne.current.style.transform = 'translateY(0)'
             updateHour()
@@ -246,10 +246,10 @@ export default function MainPage() {
         increMinTwo.current = 0
         increMinOne.current = 0
         hourDigitTwo.current.style.transform = `translateY(${increHourTwo.current}%)`
-        squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(${rotateHourTwo.current}deg)`
+        squareHourTwo.current.style.transform = `translate(-267.5%, -705%) scale(.58) rotate(${rotateHourTwo.current}deg)`
         if (increHourOne.current !== -20 && increHourTwo.current === -100) {
             rotateHourTwo.current = 0
-            squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(0deg)`
+            squareHourTwo.current.style.transform = `translate(-267.5%, -705%) scale(.58) rotate(0deg)`
             hourDigitTwo.current.style.transition = 'transform 0.25s linear'
             hourDigitTwo.current.style.transform = 'translateY(0)'
             progressHour()
@@ -263,7 +263,7 @@ export default function MainPage() {
         increHourOne.current = increHourOne.current + -10
         rotateHourOne.current += 90
         hourDigitOne.current.style.transform = `translateY(${increHourOne.current}%)`
-        squareHourOne.current.style.transform = `translate(-415%, -270%) scale(.58) rotate(${rotateHourOne.current}deg)`
+        squareHourOne.current.style.transform = `translate(-415%, -705%) scale(.58) rotate(${rotateHourOne.current}deg)`
         increSecTwo.current = 0
         count.current = 0
         increSecOne.current = 0
@@ -273,8 +273,8 @@ export default function MainPage() {
     }
     // function to restart clock once midnight is reached
     function restartClock() {
-        squareHourOne.current.style.transform = `translate(-415%, -270%) scale(.58) rotate(0deg)`
-        squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(0deg)`
+        squareHourOne.current.style.transform = `translate(-415%, -705%) scale(.58) rotate(0deg)`
+        squareHourTwo.current.style.transform = `translate(-267.5%, -705%) scale(.58) rotate(0deg)`
         hourDigitOne.current.style.transition = 'transform 0.25s linear'
         hourDigitOne.current.style.transform = 'translateY(0)'
         hourDigitTwo.current.style.transition = 'transform 0.25s linear'
@@ -289,15 +289,8 @@ export default function MainPage() {
         increHourOne.current = 0
     }
 
-    const handleStartClick = event => {
-        // startClock()
-
-    }
-
     return (
         <>
-            <Button onClick={handleStartClick}>Start</Button>
-            <Button>Stop</Button>
             <Container className={classes.container}>
                 <div ref={squareSecTwo} className={classes.squareSecTwo} />
                 <div ref={squareSecOne} className={classes.squareSecOne} />
