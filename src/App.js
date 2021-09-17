@@ -1,9 +1,9 @@
-import HomePage from './pages/HomePage'
+import ClockPage from './pages/ClockPage'
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <ClockPage />
     </div>
   );
 }

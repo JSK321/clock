@@ -6,15 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     hoursBoxOne: {
         width: 60,
-        // height:"50
         color: "blue",
         transition: "transform 0.5s linear",
-        // border: 'solid 1px black',
-        // transform:'translateY(-10%)'
     },
     hoursBoxTwo: {
         width: 60,
-        // height:"50
         color: "blue",
         transition: "transform 0.5s linear",
         marginRight: '3rem',
