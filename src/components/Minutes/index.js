@@ -1,21 +1,33 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
-
 import { makeStyles } from '@material-ui/core/styles';
+import './styles.css'
 
 const useStyles = makeStyles((theme) => ({
     minutesBoxOne: {
         width: 60,
         color: "blue",
         transition: "transform 0.5s linear",
+        marginTop: '15rem',
+        '@media (max-width: 400px)': {
+            width: 40,
+            marginTop: '15rem'
+        }
     },
     minutesBoxTwo: {
         width: 60,
         color: "blue",
         transition: "transform 0.5s linear",
+        marginTop: '15rem',
         marginRight: '3rem',
         marginLeft: "1.5rem",
         border: 'solid 1px black',
+        '@media (max-width: 400px)': {
+            width: 40,
+            marginRight: '1rem',
+            marginLeft: '.5rem',
+            marginTop: '15rem'
+        }
     },
     timeDigits: {
         fontSize: 30,
@@ -29,13 +41,15 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: '100%',
         justifyContent: 'center',
-    }
+    },
 }))
 
 export default function Minutes(props) {
     const classes = useStyles()
     return (
         <>
+            <div ref={props.squareMinTwo} className="squareMinTwo" />
+            <div ref={props.squareMinOne} className="squareMinOne" />
             <Box
                 className={classes.minutesBoxOne}
                 ref={props.minuteDigitOne}

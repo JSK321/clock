@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Container, Button, ButtonGroup } from '@material-ui/core'
+import React, { useEffect, useRef } from 'react'
+import { Container, Button,} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
+import RefreshIcon from '@material-ui/icons/Refresh';
 import Hours from '../../components/Hours'
 import Minutes from '../../components/Minutes'
 import Seconds from '../../components/Seconds'
@@ -9,7 +9,6 @@ import './styles.css'
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        border: 'solid 1px black',
         height: '100vh',
         display: 'flex',
         justifyContent: "center",
@@ -21,67 +20,16 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         bottom: 0,
         width: '100%',
-        border: 'solid 1px pink'
-    },
-    squareSecTwo: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(413%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
-    },
-    squareSecOne: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(265%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
-    },
-    squareMinTwo: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(74%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
-    },
-    squareMinOne: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(-74%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
-    },
-    squareHourTwo: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(-267.5%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
-    },
-    squareHourOne: {
-        position: 'absolute',
-        height: 55,
-        width: 55,
-        borderRadius: '15px',
-        transform: 'translate(-415%, -270%) scale(.58)',
-        transition: "transform 0.5s linear",
-        border: '1px solid black',
     },
     timerBtns: {
         visibility: 'hidden',
         marginLeft: '2rem',
-        border: '1px solid green',
+        border: 'none',
         color: "green"
+    },
+    refreshBtn: {
+        border: 'none',
+        visibility: "hidden"
     }
 }))
 
@@ -89,8 +37,6 @@ export default function ClockPage() {
     const classes = useStyles()
     // counter for seconds from 0 - 9
     const count = useRef(0)
-    // ref to indicate timer control buttons
-    const tmrBtn = useRef("Start")
     // Hours Increment for hours timer
     const increHourOne = useRef(0)
     const increHourTwo = useRef(0)
@@ -116,13 +62,6 @@ export default function ClockPage() {
     const squareMinOne = useRef(0)
     const squareHourTwo = useRef(0)
     const squareHourOne = useRef(0)
-    // Rotate Sqaure Ref
-    const rotateSecTwo = useRef(0)
-    const rotateSecOne = useRef(0)
-    const rotateMinTwo = useRef(0)
-    const rotateMinOne = useRef(0)
-    const rotateHourTwo = useRef(0)
-    const rotateHourOne = useRef(0)
     // Timer Button Group Ref
     const timerButtons = useRef()
 
@@ -189,12 +128,8 @@ export default function ClockPage() {
             secondDigitTwo.current.style.transition = 'transform 0.5s linear' // add css to smooth movement of 2nd digit of seconds box
             count.current += 1 // count to represent current number of seconds (2nd digit)
             increSecTwo.current = increSecTwo.current + -10 // increment count of seconds digit #2 (negative to move box upwards)
-            rotateSecTwo.current += 90 // increment to rotate box indicator of seconds digit #2
             secondDigitTwo.current.style.transform = `translateY(${increSecTwo.current}%)` // move seconds digit #2 box up by 10%
-            squareSecTwo.current.style.transform = `translate(413%, -270%) scale(.58) rotate(${rotateSecTwo.current}deg)` // rotate seconds digit #2 indicator by 90 deg
         } else if (count.current === 9) {
-            rotateSecTwo.current = 0 // reset seconds digit #2 rotation degree to 0
-            squareSecTwo.current.style.transform = `translate(413%, -270%) scale(.58) rotate(0deg)` // reset indicator box
             secondDigitTwo.current.style.transition = 'transform 0.25s linear' // change transition speed of box 
             secondDigitTwo.current.style.transform = 'translateY(0)' // reset box position
             updateSecond()
@@ -205,14 +140,10 @@ export default function ClockPage() {
         if (increSecTwo.current === -90 && increSecOne.current !== -50) {
             secondDigitTwo.current.style.transition = 'transform 0.5s linear'
             increSecOne.current = increSecOne.current + -10
-            rotateSecOne.current += 90
             count.current = 0
             increSecTwo.current = 0
             secondDigitOne.current.style.transform = `translateY(${increSecOne.current}%)`
-            squareSecOne.current.style.transform = `translate(265%, -270%) scale(.58) rotate(${rotateSecOne.current}deg)`
         } else if (increSecOne.current === -50) {
-            rotateSecOne.current = 0
-            squareSecOne.current.style.transform = `translate(265%, -270%) scale(.58) rotate(0deg)`
             secondDigitOne.current.style.transition = 'transform 0.25s linear'
             secondDigitOne.current.style.transform = 'translateY(0)'
             updateMinute()
@@ -223,15 +154,11 @@ export default function ClockPage() {
         if (increSecOne.current === -50 && increMinTwo.current !== -90) {
             minuteDigitTwo.current.style.transition = 'transform 0.5s linear'
             increMinTwo.current = increMinTwo.current + -10
-            rotateMinTwo.current += 90
             increSecTwo.current = 0
             count.current = 0
             increSecOne.current = 0
             minuteDigitTwo.current.style.transform = `translateY(${increMinTwo.current}%)`
-            squareMinTwo.current.style.transform = `translate(74%, -270%) scale(.58) rotate(${rotateMinTwo.current}deg)`
         } else if (increMinTwo.current === -90) {
-            rotateMinTwo.current = 0
-            squareMinTwo.current.style.transform = `translate(74%, -270%) scale(.58) rotate(0deg)`
             minuteDigitTwo.current.style.transition = 'transform 0.25s linear'
             minuteDigitTwo.current.style.transform = 'translateY(0)'
             minuteProgress()
@@ -242,16 +169,12 @@ export default function ClockPage() {
         if (increMinTwo.current === -90 && increMinOne.current !== -50) {
             minuteDigitTwo.current.style.transition = 'transform 0.5s linear'
             increMinOne.current = increMinOne.current + -10
-            rotateMinOne.current += 90
             minuteDigitOne.current.style.transform = `translateY(${increMinOne.current}%)`
-            squareMinOne.current.style.transform = `translate(-74%, -270%) scale(.58) rotate(${rotateMinOne.current}deg)`
             increSecTwo.current = 0
             count.current = 0
             increSecOne.current = 0
             increMinTwo.current = 0
         } else if (increMinOne.current === -50) {
-            rotateMinOne.current = 0
-            squareMinOne.current.style.transform = `translate(-74%, -270%) scale(.58) rotate(0deg)`
             minuteDigitOne.current.style.transition = 'transform 0.25s linear'
             minuteDigitOne.current.style.transform = 'translateY(0)'
             updateHour()
@@ -261,17 +184,13 @@ export default function ClockPage() {
     function updateHour() {
         minuteDigitOne.current.style.transition = 'transform 0.5s linear'
         increHourTwo.current = increHourTwo.current + -10
-        rotateHourTwo.current += 90
         increSecTwo.current = 0
         count.current = 0
         increSecOne.current = 0
         increMinTwo.current = 0
         increMinOne.current = 0
         hourDigitTwo.current.style.transform = `translateY(${increHourTwo.current}%)`
-        squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(${rotateHourTwo.current}deg)`
         if (increHourOne.current !== -20 && increHourTwo.current === -100) {
-            rotateHourTwo.current = 0
-            squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(0deg)`
             hourDigitTwo.current.style.transition = 'transform 0.25s linear'
             hourDigitTwo.current.style.transform = 'translateY(0)'
             progressHour()
@@ -283,9 +202,7 @@ export default function ClockPage() {
     function progressHour() {
         hourDigitOne.current.style.transition = 'transform 0.5s linear'
         increHourOne.current = increHourOne.current + -10
-        rotateHourOne.current += 90
         hourDigitOne.current.style.transform = `translateY(${increHourOne.current}%)`
-        squareHourOne.current.style.transform = `translate(-415%, -270%) scale(.58) rotate(${rotateHourOne.current}deg)`
         increSecTwo.current = 0
         count.current = 0
         increSecOne.current = 0
@@ -295,13 +212,10 @@ export default function ClockPage() {
     }
     // function to restart clock once midnight is reached
     function restartClock() {
-        squareHourOne.current.style.transform = `translate(-415%, -270%) scale(.58) rotate(0deg)`
-        squareHourTwo.current.style.transform = `translate(-267.5%, -270%) scale(.58) rotate(0deg)`
         hourDigitOne.current.style.transition = 'transform 0.25s linear'
         hourDigitOne.current.style.transform = 'translateY(0)'
         hourDigitTwo.current.style.transition = 'transform 0.25s linear'
         hourDigitTwo.current.style.transform = 'translateY(0)'
-        rotateHourOne.current = 0
         count.current = 0
         increSecTwo.current = 0
         increSecOne.current = 0
@@ -332,73 +246,104 @@ export default function ClockPage() {
 
     const handleClockButton = event => {
         let buttons = document.getElementById("timerButtons")
-        
+        let refresh = document.getElementById("refreshButton")
+
         clearInterval(timer)
         timer = null
         localTime()
         timerButtons.current.style.visibility = 'hidden'
+        refresh.style.visibility = 'hidden'
 
         if (buttons.textContent === "Stop") {
             buttons.style.color = "green"
-            buttons.style.border = "1px solid green"
             buttons.textContent = "Start"
         }
     }
 
     const handleTimerButton = event => {
+        let buttons = document.getElementById("timerButtons")
+        let refresh = document.getElementById("refreshButton")
         resetClock()
+
+        if (buttons.textContent === "Stop") {
+            buttons.style.color = "green"
+            buttons.textContent = "Start"
+        }
+
+        if (refresh.style.visibility === "visible") {
+            refresh.style.visibility = "hidden"
+        }
     }
 
     const handleStartButton = event => {
         let buttons = document.getElementById("timerButtons")
+        let refresh = document.getElementById("refreshButton")
 
         if (buttons.textContent === "Start") {
             startInt()
             buttons.textContent = "Stop"
             buttons.style.color = "red"
-            buttons.style.border = "1px solid red"
         } else if (buttons.textContent === "Stop") {
-            resetClock()
+            clearInterval(timer)
+            timer = null
+            refresh.style.visibility = "visible"
             buttons.style.color = "green"
-            buttons.style.border = "1px solid green"
             buttons.textContent = "Start"
+        }
+    }
+
+    const handleRefreshButton = event => {
+        let buttons = document.getElementById("timerButtons")
+        let refresh = document.getElementById("refreshButton")
+        refresh.style.visibility = "hidden"
+        resetClock()
+
+        if(buttons.textContent === "Stop") {
+            buttons.textContent = "Start"
+            buttons.style.color = "green"
         }
     }
 
     return (
         <>
             <Container className={classes.container}>
-                <div ref={squareSecTwo} className={classes.squareSecTwo} />
-                <div ref={squareSecOne} className={classes.squareSecOne} />
-                <div ref={squareMinTwo} className={classes.squareMinTwo} />
-                <div ref={squareMinOne} className={classes.squareMinOne} />
-                <div ref={squareHourTwo} className={classes.squareHourTwo} />
-                <div ref={squareHourOne} className={classes.squareHourOne} />
                 <Hours
                     hourDigitOne={hourDigitOne}
                     hourDigitTwo={hourDigitTwo}
+                    squareHourOne={squareHourOne}
+                    squareHourTwo={squareHourTwo}
                 />
                 <Minutes
                     minuteDigitOne={minuteDigitOne}
                     minuteDigitTwo={minuteDigitTwo}
+                    squareMinOne={squareMinOne}
+                    squareMinTwo={squareMinTwo}
                 />
                 <Seconds
                     secondDigitOne={secondDigitOne}
                     secondDigitTwo={secondDigitTwo}
+                    squareSecOne={squareSecOne}
+                    squareSecTwo={squareSecTwo}
                 />
                 <div className={classes.clockController}>
-                    <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
                         <Button onClick={handleClockButton}>Clock</Button>
                         <Button onClick={handleTimerButton}>Timer</Button>
-                    </ButtonGroup>
-                    <Button
-                        ref={timerButtons}
-                        className={classes.timerBtns}
-                        onClick={handleStartButton}
-                        id="timerButtons"
-                    >
-                        Start
-                    </Button>
+                        <Button
+                            ref={timerButtons}
+                            className={classes.timerBtns}
+                            onClick={handleStartButton}
+                            id="timerButtons"
+                        >
+                            Start
+                        </Button>
+                        <Button
+                            size="small"
+                            className={classes.refreshBtn}
+                            id="refreshButton"
+                            onClick={handleRefreshButton}
+                        >
+                            <RefreshIcon />
+                        </Button>
                 </div>
             </Container>
         </>

@@ -1,0 +1,35 @@
+.squareHourTwo {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(-267.5%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+.squareHourOne {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(-415%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 400px) {
+    .squareHourTwo {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(-173%, -60%) scale(.58);
+    }
+
+    .squareHourOne {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(-265%, -60%) scale(.58);
+    }
+}

@@ -2,19 +2,32 @@ import React, { useRef, useEffect } from 'react'
 import { Box } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles';
+import './styles.css'
 
 const useStyles = makeStyles((theme) => ({
     secondsBoxOne: {
         width: 60,
         color: "blue",
-        transition: "transform 0.5s linear"
+        transition: "transform 0.5s linear",
+        marginTop: '15rem',
+        '@media (max-width: 400px)': {
+            width: 40,
+            marginTop: '15rem',
+        }
     },
     secondsBoxTwo: {
         width: 60,
         color: "blue",
         transition: "transform 0.5s linear",
+        marginTop: '15rem',
         marginLeft: "1.5rem",
         border: 'solid 1px black',
+        '@media (max-width: 400px)': {
+            width: 40,
+            marginRight: '1rem',
+            marginLeft: '.5rem',
+            marginTop: '15rem',
+        }
     },
     timeDigits: {
         fontSize: 30,
@@ -36,6 +49,8 @@ export default function Seconds(props) {
 
     return (
         <>
+            <div ref={props.squareSecTwo} className="squareSecTwo" />
+            <div ref={props.squareSecOne} className="squareSecOne" />
             <Box
                 className={classes.secondsBoxOne}
                 ref={props.secondDigitOne}

@@ -1,0 +1,35 @@
+.squareSecTwo {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(413%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+.squareSecOne {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(265%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 400px) {
+    .squareSecTwo {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(234%, -60%) scale(.58);
+    }
+
+    .squareSecOne {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(142%, -60%) scale(.58);
+    }
+}

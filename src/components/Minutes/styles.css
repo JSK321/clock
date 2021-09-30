@@ -1,0 +1,35 @@
+.squareMinTwo {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(74%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+.squareMinOne {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 15rem;
+    border-radius: 15px;
+    transform: translate(-74%, -270%) scale(.58);
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 400px) {
+    .squareMinTwo {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(30%, -60%) scale(.58);
+    }
+
+    .squareMinOne {
+        width: 50px;
+        margin-top: 0;
+        border-radius: 15px;
+        transform: translate(-62%, -60%) scale(.58);
+    }
+}
