@@ -6,23 +6,25 @@ import './styles.css'
 const useStyles = makeStyles((theme) => ({
     minutesBoxOne: {
         width: 60,
-        color: "blue",
+        color: "#262626",
         transition: "transform 0.5s linear",
         marginTop: '15rem',
-        '@media (max-width: 400px)': {
+        userSelect: 'none',
+        '@media (max-width: 420px)': {
             width: 40,
             marginTop: '15rem'
         }
     },
     minutesBoxTwo: {
         width: 60,
-        color: "blue",
+        color: "#262626",
         transition: "transform 0.5s linear",
         marginTop: '15rem',
         marginRight: '3rem',
         marginLeft: "1.5rem",
+        userSelect: 'none',
         border: 'solid 1px black',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 420px)': {
             width: 40,
             marginRight: '1rem',
             marginLeft: '.5rem',

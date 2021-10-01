@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Container, Button,} from '@material-ui/core'
+import { Container, Button, } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Hours from '../../components/Hours'
@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: 'center',
         flexWrap: 'wrap',
+        '@media (max-height: 400px)': {
+            alignItems: 'flex-end',
+        }
     },
     clockController: {
         display: 'flex',
@@ -23,13 +26,24 @@ const useStyles = makeStyles((theme) => ({
     },
     timerBtns: {
         visibility: 'hidden',
-        marginLeft: '2rem',
+        marginLeft: '3rem',
         border: 'none',
-        color: "green"
+        color: "green",
+        '@media (max-height: 450px)': {
+            marginLeft: 0,
+            position: 'absolute',
+            right: 40,
+        }
     },
     refreshBtn: {
         border: 'none',
-        visibility: "hidden"
+        visibility: "hidden",
+        '@media (max-height: 450px)': {
+            marginLeft: 0,
+            position: 'absolute',
+            right: 0,
+            top: 4,
+        }
     }
 }))
 
@@ -298,7 +312,7 @@ export default function ClockPage() {
         refresh.style.visibility = "hidden"
         resetClock()
 
-        if(buttons.textContent === "Stop") {
+        if (buttons.textContent === "Stop") {
             buttons.textContent = "Start"
             buttons.style.color = "green"
         }
@@ -326,24 +340,24 @@ export default function ClockPage() {
                     squareSecTwo={squareSecTwo}
                 />
                 <div className={classes.clockController}>
-                        <Button onClick={handleClockButton}>Clock</Button>
-                        <Button onClick={handleTimerButton}>Timer</Button>
-                        <Button
-                            ref={timerButtons}
-                            className={classes.timerBtns}
-                            onClick={handleStartButton}
-                            id="timerButtons"
-                        >
-                            Start
-                        </Button>
-                        <Button
-                            size="small"
-                            className={classes.refreshBtn}
-                            id="refreshButton"
-                            onClick={handleRefreshButton}
-                        >
-                            <RefreshIcon />
-                        </Button>
+                    <Button onClick={handleClockButton}>Clock</Button>
+                    <Button onClick={handleTimerButton}>Timer</Button>
+                    <Button
+                        ref={timerButtons}
+                        className={classes.timerBtns}
+                        onClick={handleStartButton}
+                        id="timerButtons"
+                    >
+                        Start
+                    </Button>
+                    <Button
+                        size="small"
+                        className={classes.refreshBtn}
+                        id="refreshButton"
+                        onClick={handleRefreshButton}
+                    >
+                        <RefreshIcon fontSize="small" />
+                    </Button>
                 </div>
             </Container>
         </>
