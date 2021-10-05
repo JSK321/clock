@@ -9,11 +9,13 @@ const useStyles = makeStyles((theme) => ({
         width: 60,
         color: "#262626",
         transition: "transform 0.5s linear",
-        marginTop: '15rem',
+        marginTop: '6.5rem',
         userSelect: 'none',
+        border: 'solid 1px black',
+        boxShadow: '4px 4px #595959, -4px -4px #A6A6A6',
+        clipPath: 'inset(-5px -5px -5px -5px)',
         '@media (max-width: 420px)': {
             width: 40,
-            marginTop: '15rem',
         },
     },
     secondsBoxTwo: {
@@ -24,21 +26,14 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "1.5rem",
         userSelect: 'none',
         border: 'solid 1px black',
+        boxShadow: '4px 4px #595959, -4px -4px #A6A6A6',
         '@media (max-width: 420px)': {
             width: 40,
             marginRight: '1rem',
-            marginLeft: '.5rem',
-            marginTop: '15rem',
+            marginLeft: '.75rem',
         },
     },
     timeDigits: {
-        fontSize: 30,
-        display: "flex",
-        width: '100%',
-        justifyContent: 'center',
-    },
-    hiddenDigits: {
-        visibility: "hidden",
         fontSize: 30,
         display: "flex",
         width: '100%',
@@ -59,71 +54,33 @@ export default function Seconds(props) {
             >
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderTop: "1px solid black",
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     0
                 </div>
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     1
                 </div>
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     2
                 </div>
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     3
                 </div>
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     4
                 </div>
                 <div
                     className={classes.timeDigits}
-                    style={{
-                        borderBottom: "1px solid black",
-                        borderRight: "1px solid black",
-                        borderLeft: "1px solid black",
-                    }}
                 >
                     5
-                </div>
-                <div className={classes.hiddenDigits}>
-                    6
-                </div>
-                <div className={classes.hiddenDigits}>
-                    7
-                </div>
-                <div className={classes.hiddenDigits}>
-                    8
-                </div>
-                <div className={classes.hiddenDigits}>
-                    9
                 </div>
             </Box>
             <Box

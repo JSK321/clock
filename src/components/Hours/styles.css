@@ -4,7 +4,7 @@
     width: 55px;
     margin-top: 15rem;
     border-radius: 30px;
-    transform: translate(-267.5%, -270%) scale(.58);
+    transform: translate(-269.5%, -270%) scale(.58);
     border: 1px solid black;
 }
 
@@ -14,7 +14,7 @@
     width: 55px;
     margin-top: 15rem;
     border-radius: 30px;
-    transform: translate(-415%, -270%) scale(.58);
+    transform: translate(-420%, -270%) scale(.58);
     border: 1px solid black;
 }
 
@@ -23,23 +23,23 @@
         width: 50px;
         margin-top: 0;
         border-radius: 30px;
-        transform: translate(-173%, -60%) scale(.58);
+        transform: translate(-180%, -60%) scale(.58);
     }
 
     .squareHourOne {
         width: 50px;
         margin-top: 0;
         border-radius: 30px;
-        transform: translate(-265%, -60%) scale(.58);
+        transform: translate(-283%, -60%) scale(.58);
     }
 }
 
 @media screen and (max-height: 420px) {
     .squareHourTwo {
-        transform: translate(-267.5%, -155%) scale(.58);
+        transform: translate(-269.5%, -88%) scale(.58);
     }
     
     .squareHourOne {
-        transform: translate(-415%, -155%) scale(.58);
+        transform: translate(-420%, -88%) scale(.58);
     }
 }

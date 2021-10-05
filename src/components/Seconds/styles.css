@@ -4,7 +4,7 @@
     width: 55px;
     margin-top: 15rem;
     border-radius: 30px;
-    transform: translate(413%, -270%) scale(.58);
+    transform: translate(418%, -270%) scale(.58);
     border: 1px solid black;
 }
 
@@ -14,7 +14,7 @@
     width: 55px;
     margin-top: 15rem;
     border-radius: 30px;
-    transform: translate(265%, -270%) scale(.58);
+    transform: translate(267%, -270%) scale(.58);
     border: 1px solid black;
 }
 
@@ -23,23 +23,23 @@
         width: 50px;
         margin-top: 0;
         border-radius: 30px;
-        transform: translate(234%, -60%) scale(.58);
+        transform: translate(251%, -60%) scale(.58);
     }
 
     .squareSecOne {
         width: 50px;
         margin-top: 0;
         border-radius: 30px;
-        transform: translate(142%, -60%) scale(.58);
+        transform: translate(147%, -60%) scale(.58);
     }
 }
 
 @media screen and (max-height: 420px) {
     .squareSecTwo {
-        transform: translate(413%, -155%) scale(.58);
+        transform: translate(418%, -88%) scale(.58);
     }
 
     .squareSecOne {
-        transform: translate(265%, -155%) scale(.58);
+        transform: translate(267%, -88%) scale(.58);
     }
 }

@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: 'center',
         flexWrap: 'wrap',
-        '@media (max-height: 400px)': {
-            alignItems: 'flex-end',
-        }
     },
     clockController: {
         display: 'flex',
@@ -70,12 +67,12 @@ export default function ClockPage() {
     const secondDigitOne = useRef(0)
     const secondDigitTwo = useRef(0)
     // Square Ref
-    const squareSecTwo = useRef(0)
-    const squareSecOne = useRef(0)
-    const squareMinTwo = useRef(0)
-    const squareMinOne = useRef(0)
-    const squareHourTwo = useRef(0)
-    const squareHourOne = useRef(0)
+    const squareSecTwo = useRef()
+    const squareSecOne = useRef()
+    const squareMinTwo = useRef()
+    const squareMinOne = useRef()
+    const squareHourTwo = useRef()
+    const squareHourOne = useRef()
     // Timer Button Group Ref
     const timerButtons = useRef()
 
@@ -104,26 +101,15 @@ export default function ClockPage() {
         count.current = (parseInt(seconds[1]))
         // update increment of seconds to real time, 1 second = 10%
         increSecTwo.current = (-parseInt(seconds[1] + 0)) // increment box, second digit of seconds
-        increSecOne.current = (-parseInt(seconds[0] + 0)) // increment box, first digit of seconds
+        // increSecOne.current = (-parseInt(seconds[0] + 0)) // increment box, first digit of seconds
+        increSecOne.current = (-parseInt(seconds[0]) * 16.666) // increment box, first digit of seconds
         // update increment of minutes to real time
         increMinTwo.current = (-parseInt(minutes[1] + 0)) // increment box, second digit of minutes
-        increMinOne.current = (-parseInt(minutes[0] + 0)) // increment box, first digit of minutes
+        // increMinOne.current = (-parseInt(minutes[0] + 0)) // increment box, first digit of minutes
+        increMinOne.current = (-parseInt(minutes[0]) * 16.666) // increment box, first digit of minutes
         // update increment of hours to real time
         increHourTwo.current = (-parseInt(hours[1] + 0))  // increment box, second digit of hours
-        increHourOne.current = (-parseInt(hours[0] + 0))  // increment box, first digit of hours
-
-        // TESTING ---------------------------------------------------------------//
-        // count.current = (0)
-        // increSecTwo.current = (0)
-        // increSecOne.current = (-40)
-
-        // increMinTwo.current = (-80)
-        // increMinOne.current = (-40)
-
-        // increHourTwo.current = (-80)
-        // increHourOne.current = (-10)
-        // TESTING ---------------------------------------------------------------//
-
+        increHourOne.current = (-parseInt(hours[0]) * 33.333)  // increment box, first digit of hours
         // update digits of seconds, moves box up by seconds increment
         secondDigitTwo.current.style.transform = `translateY(${increSecTwo.current}%)`
         secondDigitOne.current.style.transform = `translateY(${increSecOne.current}%)`
@@ -151,13 +137,13 @@ export default function ClockPage() {
     }
     // function to update first digit of seconds on the clock
     function updateSecond() {
-        if (increSecTwo.current === -90 && increSecOne.current !== -50) {
+        if (increSecTwo.current === -90 && increSecOne.current > -83.33) {
             secondDigitTwo.current.style.transition = 'transform 0.5s linear'
-            increSecOne.current = increSecOne.current + -10
+            increSecOne.current = increSecOne.current + -16.666
             count.current = 0
             increSecTwo.current = 0
             secondDigitOne.current.style.transform = `translateY(${increSecOne.current}%)`
-        } else if (increSecOne.current === -50) {
+        } else if (increSecOne.current <= -83.33) {
             secondDigitOne.current.style.transition = 'transform 0.25s linear'
             secondDigitOne.current.style.transform = 'translateY(0)'
             updateMinute()
@@ -165,7 +151,7 @@ export default function ClockPage() {
     }
     // function to update second digits of minutes on the clock
     function updateMinute() {
-        if (increSecOne.current === -50 && increMinTwo.current !== -90) {
+        if (increSecOne.current <= -83.33 && increMinTwo.current !== -90) {
             minuteDigitTwo.current.style.transition = 'transform 0.5s linear'
             increMinTwo.current = increMinTwo.current + -10
             increSecTwo.current = 0
@@ -180,15 +166,15 @@ export default function ClockPage() {
     }
     // function to update first digit of minutes on clock
     function minuteProgress() {
-        if (increMinTwo.current === -90 && increMinOne.current !== -50) {
+        if (increMinTwo.current === -90 && increMinOne.current > -83.33) {
             minuteDigitTwo.current.style.transition = 'transform 0.5s linear'
-            increMinOne.current = increMinOne.current + -10
+            increMinOne.current = increMinOne.current + -16.666
             minuteDigitOne.current.style.transform = `translateY(${increMinOne.current}%)`
             increSecTwo.current = 0
             count.current = 0
             increSecOne.current = 0
             increMinTwo.current = 0
-        } else if (increMinOne.current === -50) {
+        } else if (increMinOne.current <= -83.33) {
             minuteDigitOne.current.style.transition = 'transform 0.25s linear'
             minuteDigitOne.current.style.transform = 'translateY(0)'
             updateHour()
@@ -204,18 +190,18 @@ export default function ClockPage() {
         increMinTwo.current = 0
         increMinOne.current = 0
         hourDigitTwo.current.style.transform = `translateY(${increHourTwo.current}%)`
-        if (increHourOne.current !== -20 && increHourTwo.current === -100) {
+        if (increHourOne.current !== -66.666 && increHourTwo.current === -100) {
             hourDigitTwo.current.style.transition = 'transform 0.25s linear'
             hourDigitTwo.current.style.transform = 'translateY(0)'
             progressHour()
-        } else if (increHourOne.current === -20 && increHourTwo.current === -40) {
+        } else if (increHourOne.current === -66.666 && increHourTwo.current === -40) {
             restartClock()
         }
     }
     // function to update first digit of hours on clock
     function progressHour() {
         hourDigitOne.current.style.transition = 'transform 0.5s linear'
-        increHourOne.current = increHourOne.current + -10
+        increHourOne.current = increHourOne.current + -33.333
         hourDigitOne.current.style.transform = `translateY(${increHourOne.current}%)`
         increSecTwo.current = 0
         count.current = 0
