@@ -18,7 +18,26 @@
     border: 1px solid black;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 575px) {
+    .squareMinTwo {
+        transform: translate(64%, -270%) scale(.58);
+    }
+
+    .squareMinOne {
+        transform: translate(-64%, -270%) scale(.58);
+    }
+}
+
+@media screen and (max-width: 505px) {
+    .squareMinTwo {
+        transform: translate(61%, -270%) scale(.58);
+    }
+    .squareMinOne {
+        transform: translate(-58%, -270%) scale(.58);
+    }
+}
+
+@media screen and (max-width: 430px) {
     .squareMinTwo {
         width: 50px;
         margin-top: 0;

@@ -12,7 +12,13 @@ const useStyles = makeStyles((theme) => ({
         userSelect: 'none',
         border: '1px solid black',
         boxShadow: '4px 4px #595959, -4px -4px #A6A6A6',
-        '@media (max-width: 420px)': {
+        '@media (max-width: 575px)': {
+            width: 55,
+        },
+        '@media (max-width: 505px)': {
+            width: 50,
+        },
+        '@media (max-width: 430px)': {
             width: 40,
         }
     },
@@ -26,7 +32,16 @@ const useStyles = makeStyles((theme) => ({
         userSelect: 'none',
         border: 'solid 1px black',
         boxShadow: '4px 4px #595959, -4px -4px #A6A6A6',
-        '@media (max-width: 420px)': {
+        '@media (max-width: 575px)': {
+            width: 55,
+            marginLeft: '1rem',
+            marginRight: '2.5rem'
+        },
+        '@media (max-width: 505px)': {
+            width: 47,
+            marginRight: '1.5rem'
+        },
+        '@media (max-width: 430px)': {
             width: 40,
             marginRight: '1rem',
             marginLeft: '.75rem',
