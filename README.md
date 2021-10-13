@@ -6,21 +6,12 @@
 A simple clock 24-hour clock which is automatically set to the users local time. It was created to showcase the use of React Refs to prevent re-rendering of the application. The clock is also able to be used as a timer using the buttons on the bottom.
 
 ## React-Application
-View the application at: 
-        
-## Table of Contents
-- [Usage](#usage)
-
-- [Screenshot](#screenshot)
-
-- [License](#license)
-
-- [Contributors](#contributors)
-
-- [Questions](#questions)
+View the application at: https://digital-mechanized-clock.herokuapp.com/
 
 ## Screenshot
-<!-- ![Website index](https://i.imgur.com/q7cYC9h.png) -->
+Click picture for video demonstration.
+[![Video](./Assets/clock.png)](https://watch.screencastify.com/v/kFA76pmLgrXv0tHP5g3W)
+
 
 ## License
 This project uses MIT
